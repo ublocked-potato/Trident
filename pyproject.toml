@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "tideproxy"
+version = "1.0.0"
+description = "Tide — unified proxy frontend + PyProxy backend"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+tls = ["cryptography>=41.0"]
+dev = ["pytest>=7.4", "pytest-asyncio>=0.23", "pytest-cov>=4.1", "ruff>=0.1"]
+
+[project.scripts]
+tideproxy = "src.main:run"
+
+[tool.pytest.ini_options]
+testpaths    = ["tests"]
+asyncio_mode = "auto"
+addopts      = "-v --tb=short"
+
+[tool.ruff]
+line-length    = 99
+target-version = "py311"
